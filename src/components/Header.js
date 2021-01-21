@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react';
+import User from './User';
 import logo from './../images/logo.png'
 
 const useStyles = makeStyles(()=>({
@@ -7,15 +8,15 @@ const useStyles = makeStyles(()=>({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
+        position:'fixed',
+        top:'0',
+        width:'100%',
+        padding:'5px',
+        background:'whitesmoke',
+        borderBottom:'1px solid #B9B9B9'
     },
     img:{
         height: '70px'
-    },
-    user:{
-        display:'flex',
-        flexDirection: 'row',
-        fontSize: '20px',
-        fontFamily: 'sans-serif'
     }
 }));
 
@@ -25,10 +26,7 @@ const Header = () => {
   return (
     <div className={classes.head}>
       <img src={logo} className={classes.img} />
-      <div className={classes.user}>
-          <div className='userName'>Diego Edgardo Salazar Vergara</div>
-          <div className='gender'>H</div>
-      </div>
+      <User />
     </div>
   );
 }
