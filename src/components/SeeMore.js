@@ -1,0 +1,31 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
+import './../css/fonts.css';
+
+const useStyles = makeStyles(()=>({
+    seeMore:{
+        margin:'10px auto',
+        color: '#5A2120',
+        fontSize:'15px'
+    },
+    arrow:{
+        position:'relative',
+        top:'1px'
+    }
+
+  
+
+}));
+
+const SeeMore = () => {
+  const classes = useStyles();
+  return (
+    
+    <div className={classes.seeMore}>Ver más <FontAwesomeIcon icon={faArrowRight} className={classes.arrow}/> </div>
+    
+  );
+}
+
+export default SeeMore;

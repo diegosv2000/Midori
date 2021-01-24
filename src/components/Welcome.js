@@ -1,12 +1,12 @@
-import { makeStyles } from '@material-ui/core';
 import React from 'react';
+import { makeStyles } from '@material-ui/core';
 import InputForm from './InputForm';
-
+import './../css/fonts.css';
 
 const useStyles = makeStyles(()=>({
   home:{
     textAlign: 'center',
-    margin: '80px auto',
+    margin: '130px auto',
     "& form":{
       margin: '60px auto'
     }

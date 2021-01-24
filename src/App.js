@@ -6,7 +6,6 @@ import './App.css';
 
 const useStyles = makeStyles(()=>({
   containerHome:{
-    margin:'50px',
     display:'flex',
     justifyContent:'center'
   }
