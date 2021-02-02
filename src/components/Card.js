@@ -67,22 +67,22 @@ const useStyles = makeStyles(()=>({
 
 const Card = () => {
   const classes = useStyles();
+
   return (
-
-        <button className={classes.card}>
-            <div className={classes.cardContent}>
-                <div className={classes.imgCont}><img src={perfil}/></div>
-                <div className={classes.infoCard}>
-                    <div className={classes.nameCard}>Andrés Miguel</div>
-                    <div className={classes.lnameCard}>Saavedra Sanchez</div>
-                    <div className={classes.professionCard}><strong>Carrera: </strong>Ing. Físico</div>
-                    <div className={classes.positionCard}><strong>Cargo: </strong> Presidente</div>
-                </div>
+    <button className={classes.card}>
+        <div className={classes.cardContent}>
+            <div className={classes.imgCont}>
+                <img src={perfil}/>
             </div>
-            <div className={classes.smContent}><SeeMore /></div>
-        </button>
-
-    
+            <div className={classes.infoCard}>
+                <div className={classes.nameCard}>Andrés Miguel</div>
+                <div className={classes.lnameCard}>Saavedra Sanchez</div>
+                <div className={classes.professionCard}><strong>Carrera: </strong>Ing. Físico</div>
+                <div className={classes.positionCard}><strong>Cargo: </strong> Presidente</div>
+            </div>
+        </div>
+        <div className={classes.smContent}><SeeMore /></div>
+    </button>
   );
 }
 

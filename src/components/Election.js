@@ -2,9 +2,8 @@ import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import './../css/fonts.css';
 
-
-const useStyles = makeStyles(()=>({
-    election:{
+const useStyles = makeStyles(() => ({
+    election: {
         border: '1px solid #5A2120',
         width:'170px',
         height:'155px',
@@ -16,23 +15,21 @@ const useStyles = makeStyles(()=>({
         borderRadius:'10px',
         outline:'none',
         transition:'.4s',
-        "&:hover":{
+        "&:hover": {
             background:'#5A2120',
             color:'#FFEFC9',
             cursor:'pointer'
         }
     }
-
 }));
 
-const Election = (props) => {
+const Election = props => {
   const classes = useStyles();
+  
   return (
-    
-      <button className={classes.election}>
-          {props.text}
-      </button>
-    
+    <button className={classes.election}>
+        {props.text}
+    </button>
   );
 }
 

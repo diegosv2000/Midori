@@ -1,9 +1,10 @@
 import { makeStyles } from '@material-ui/core';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faMale} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMale } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import './../css/fonts.css';
-const useStyles = makeStyles(()=>({
+
+const useStyles = makeStyles(() => ({
     user:{
         display:'flex',
         flexDirection: 'row',
@@ -18,9 +19,9 @@ const useStyles = makeStyles(()=>({
     }
 }));
 
-
 const User = () => {
   const classes = useStyles();
+
   return (
     <div className={classes.user}>
         <div className='userName'>DIEGO EDGARDO SALAZAR VERGARA</div>

@@ -1,15 +1,43 @@
 import React from 'react';
-import Welcome from './../components/Welcome';
-import Search from './../components/Search';
-import Lists from './../components/Lists';
-import Members from './../components/Members';
-import MemberData from './../components/MemberData';
+import Welcome from './Welcome';
+import Search from './Search';
+import Lists from './Lists';
+import Members from './Members';
+import MemberData from './MemberData';
+import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+
+
 const Home = () => {
 
   return (
-    <React.Fragment>
-        <MemberData />
-    </React.Fragment>
+    
+    <Router>
+      <Switch>
+
+        <Route path='/' exact>
+          <Welcome />
+        </Route>
+
+        <Route path='/Elecciones' >
+          <Search />
+        </Route>
+
+        <Route path='/Listas' >
+          <Lists />
+        </Route>
+
+        <Route path='/Miembros' >
+          <Members />
+        </Route>
+
+        <Route path='/Miembro' >
+          <MemberData />
+        </Route>
+
+      </Switch>
+    </Router>
+    
+    
   );
 }
 
