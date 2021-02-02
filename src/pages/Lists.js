@@ -3,6 +3,7 @@ import React from 'react';
 import List from 'components/List';
 import 'css/fonts.css';
 import Navegation from 'components/Navegation';
+import Header from 'components/Header';
 
 const useStyles = makeStyles(()=>({
     lists:{
@@ -34,6 +35,7 @@ const Lists = () => {
   const classes = useStyles();
   return (
       <React.Fragment>
+        <Header />
         <Navegation />
         <div className={classes.lists}>
             <div className={classes.titleElection}>ELECCIONES RECTORALES 2021</div>

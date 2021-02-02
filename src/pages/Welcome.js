@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import InputForm from 'components/InputForm';
+import Header from 'components/Header';
 import 'css/fonts.css';
 
 const useStyles = makeStyles(()=>({
@@ -50,7 +51,8 @@ const useStyles = makeStyles(()=>({
 const Welcome = () => {
   const classes = useStyles();
   return (
-    
+    <React.Fragment>
+      <Header />
       <div className={classes.home}>
         <h2 className={classes.welcome}>Bienvenid@</h2>
         <p className={classes.info}>a <strong>Voto Informado</strong> UNI, gracias por visitar nuestra página web. 
@@ -64,6 +66,7 @@ const Welcome = () => {
         </form>
 
       </div>
+    </React.Fragment>
     
   );
 }

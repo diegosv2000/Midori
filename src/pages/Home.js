@@ -4,7 +4,9 @@ import Search from './Search';
 import Lists from './Lists';
 import Members from './Members';
 import MemberData from './MemberData';
+import NotFound from './NotFound';
 import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+
 
 
 const Home = () => {
@@ -18,20 +20,24 @@ const Home = () => {
           <Welcome />
         </Route>
 
-        <Route path='/Elecciones' >
+        <Route path='/Elecciones' exact>
           <Search />
         </Route>
 
-        <Route path='/Listas' >
+        <Route path='/Listas' exact >
           <Lists />
         </Route>
 
-        <Route path='/Miembros' >
+        <Route path='/Miembros' exact>
           <Members />
         </Route>
 
-        <Route path='/Miembro' >
+        <Route path='/Miembro' exact>
           <MemberData />
+        </Route>
+
+        <Route path='*'>
+          <NotFound />
         </Route>
 
       </Switch>

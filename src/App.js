@@ -15,7 +15,6 @@ const App = () => {
   const classes = useStyles();
   return (
     <div className="App">
-      <Header />
       <div className={classes.containerHome}>
         <Home />
       </div>

@@ -4,6 +4,7 @@ import 'css/fonts.css';
 import Navegation from 'components/Navegation';
 import Return from 'components/Return';
 import Card from 'components/Card';
+import Header from 'components/Header';
 
 const useStyles = makeStyles(()=>({
     members:{
@@ -60,6 +61,7 @@ const Members = () => {
   const classes = useStyles();
   return (
       <React.Fragment>
+        <Header />
         <Navegation />
         <div className={classes.members}>
             <div className={classes.titleElection}>ELECCIONES RECTORALES 2021</div>

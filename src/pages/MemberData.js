@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react';
-import {Navegation,Return,ListName} from 'components'
+import {Navegation,Return,ListName,Header} from 'components'
 import perfil from 'images/perfil.jpg';
 import 'css/fonts.css';
 
@@ -79,6 +79,7 @@ const Member = () => {
   const classes = useStyles();
   return (
       <React.Fragment>
+        <Header />
         <Navegation />
         <div className={classes.dataContainer}>
             <div className={classes.titleElection}>ELECCIONES RECTORALES 2021</div>

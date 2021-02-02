@@ -2,6 +2,7 @@ import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import Election from 'components/Election';
 import Navegation from 'components/Navegation';
+import Header from 'components/Header';
 import logoUNI from 'images/UNI_logo.png';
 import 'css/fonts.css';
 
@@ -59,7 +60,8 @@ const useStyles = makeStyles(()=>({
 const Search = () => {
   const classes = useStyles();
   return (
-    
+    <React.Fragment>
+      <Header />
       <div className={classes.search}>
           <Navegation />
           <div className={classes.searchTitle}> Bienvenido DIEGO </div>
@@ -80,6 +82,7 @@ const Search = () => {
             </div>
           </div>
       </div>
+    </React.Fragment>
     
   );
 }
