@@ -25,12 +25,12 @@ const useStyles = makeStyles((theme)=>({
 }));
 
 
-const Header = () => {
+const Header = props => {
   const classes = useStyles();
   return (
     <header className={classes.head}>
-      <img src={logo} className={classes.img} />
-      <User />
+      <img src={logo} className={classes.img} alt="logo_VI" />
+      <User changeShow={props.changeShow} show={props.show} />
     </header>
   );
 }

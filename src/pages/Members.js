@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React,{useState} from 'react';
+
 import 'css/fonts.css';
 import Navegation from 'components/Navegation';
 import Return from 'components/Return';
@@ -77,13 +77,16 @@ const useStyles = makeStyles((theme)=>({
 
 const Members = () => {
   const classes = useStyles();
- 
+  const [show, setShow] = useState(false);
+  const changeShow = () =>{
+    setShow(!show);
+  }
 
 
   return (
       <React.Fragment>
-        <Header />
-        <Navegation />
+        <Header changeShow={changeShow} show={show}/>
+        <Navegation changeShow={changeShow} show={show} />
         <div className={classes.members}>
             <div className={classes.titleElection}>ELECCIONES RECTORALES 2021</div>
             <div className={classes.subTitleElection}>Integrantes de la lista <div>1</div> </div>

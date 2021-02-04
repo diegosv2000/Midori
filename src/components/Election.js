@@ -1,36 +1,38 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import './../css/fonts.css';
 
 const useStyles = makeStyles(() => ({
-    election: {
-        border: '1px solid #5A2120',
-        width:'170px',
-        height:'155px',
-        color:'#5A2120',
-        fontSize:'14px',
-        fontFamily: 'Rubik, sans-serif',
-        padding: '15px',
-        background:'none',
-        borderRadius:'10px',
-        outline:'none',
-        transition:'.4s',
-        "&:hover": {
-            background:'#5A2120',
-            color:'#FFEFC9',
-            cursor:'pointer'
-        }
-    }
+  election: {
+    border: '1px solid #5A2120',
+    width: '170px',
+    height: '155px',
+    color: '#5A2120',
+    fontSize: '14px',
+    fontFamily: 'Rubik, sans-serif',
+    padding: '15px',
+    background: 'none',
+    borderRadius: '10px',
+    outline: 'none',
+    transition: '.4s',
+    '&:hover': {
+      background: '#5A2120',
+      color: '#FFEFC9',
+      cursor: 'pointer',
+    },
+  },
 }));
 
-const Election = props => {
+const Election = (props) => {
   const classes = useStyles();
-  
+  const history = useHistory();
+
   return (
-    <button className={classes.election}>
-        {props.text}
+    <button className={classes.election} onClick={() => history.push('/lists')}>
+      {props.text}
     </button>
   );
-}
+};
 
 export default Election;

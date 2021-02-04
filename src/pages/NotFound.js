@@ -19,7 +19,7 @@ const Lists = () => {
   const classes = useStyles();
   return (
       <div className={classes.notFound}>
-        <img src={notFound} />
+        <img src={notFound} alt="not Found"/>
       </div>
     
   );

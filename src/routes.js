@@ -3,29 +3,35 @@ import { Welcome, Search, Lists, Members, MemberData, NotFound } from 'pages';
 
 const routes = [
   {
-    path: "/",
-    component: <Welcome />,
+    path: '/',
+    component: () => <Welcome />,
+    exact: true,
   },
   {
-    path: "/Elecciones",
-    component: <Search />,
+    path: '/elections',
+    component: () => <Search />,
+    exact: true,
   },
   {
-    path: "/Listas",
-    component: <Lists />,
+    path: '/lists',
+    component: () => <Lists />,
+    exact: true,
   },
   {
-    path: "/Miembros",
-    component: <Members />,
+    path: '/members',
+    component: () => <Members />,
+    exact: true,
   },
   {
-    path: "/Miembro",
-    component: <MemberData />,
-  },,
-  {
-    path: "*",
-    component: <NotFound />,
+    path: '/member',
+    component: () => <MemberData />,
+    exact: true,
   },
-]
+  {
+    path: '*',
+    component: () => <NotFound />,
+    exact: true,
+  },
+];
 
-export default routes
+export default routes;

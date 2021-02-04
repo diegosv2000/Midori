@@ -2,6 +2,7 @@ import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import SeeMore from './SeeMore';
 import './../css/fonts.css';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles(()=>({
     list:{
@@ -61,9 +62,11 @@ const useStyles = makeStyles(()=>({
 
 const List = () => {
   const classes = useStyles();
+  const history = useHistory();
+
   return (
     
-      <button className={classes.list}>
+      <button className={classes.list} onClick={() => history.push("/members")}>
           <div className={classes.titleList}>LISTA</div>
           
           <div className={classes.contName}>
