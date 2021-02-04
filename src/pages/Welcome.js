@@ -69,8 +69,8 @@ const Welcome = () => {
   const history = useHistory();
   const SendCode = (e) => {
     e.preventDefault();
-    let codeUni = document.getElementById('codeUni').value;
-    if (isAValidCodeByRule(codeUni, 'uni')) {
+    const codeUni = document.getElementById('codeUni').value;
+    if (isAValidCodeByRule(codeUni.toUpperCase(), 'uni')) {
       document.getElementById('verif').style.display = 'none';
       history.push('/elections');
     } else {
