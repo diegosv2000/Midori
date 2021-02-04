@@ -5,19 +5,25 @@ import 'css/fonts.css';
 import Navegation from 'components/Navegation';
 import Header from 'components/Header';
 
-const useStyles = makeStyles(()=>({
+const useStyles = makeStyles((theme)=>({
     lists:{
-        margin:'81px 0 0 85px',
+        margin:'81px 20px 0 85px',
         width:'100%',
         display:'flex',
-        flexDirection:'column'
+        flexDirection:'column',
+        [theme.breakpoints.down('xs')]:{
+            margin:'61px 20px 0'
+        }
     },
     titleElection:{
         margin:'20px 0 0',
         textAlign:'center',
         fontSize:'40px',
         fontFamily: 'Rubik, sans-serif',
-        fontWeight:'bold'
+        fontWeight:'bold',
+        [theme.breakpoints.down('xs')]:{
+            fontSize:'30px'
+        }
     },
     listsContainer:{
         margin:'25px auto',

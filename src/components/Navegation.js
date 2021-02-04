@@ -5,7 +5,7 @@ import {faHome} from '@fortawesome/free-solid-svg-icons';
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import './../css/fonts.css';
 
-const useStyles = makeStyles(()=>({
+const useStyles = makeStyles((theme)=>({
     navBar:{
         padding:'40px 0 0 0',
         display:'flex',
@@ -17,6 +17,10 @@ const useStyles = makeStyles(()=>({
         top:'81px',
         height:'100%',
         transition: '.5s',
+        [theme.breakpoints.down('xs')]:{
+            top:'61px',
+            left:'-85px'
+        },
         "& button":{
             width:'100%',
             border: 'none',

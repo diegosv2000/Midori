@@ -4,11 +4,14 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
 import './../css/fonts.css';
 
-const useStyles = makeStyles(()=>({
+const useStyles = makeStyles((theme)=>({
     seeMore:{
         margin:'10px auto',
         color: '#5A2120',
-        fontSize:'15px'
+        fontSize:'15px',
+        [theme.breakpoints.down('xs')]:{
+            fontSize:'12px'
+        }
     },
     arrow:{
         position:'relative',

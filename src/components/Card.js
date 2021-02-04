@@ -4,7 +4,7 @@ import './../css/fonts.css';
 import perfil from './../images/perfil.jpg'
 import SeeMore from './SeeMore';
 
-const useStyles = makeStyles(()=>({
+const useStyles = makeStyles((theme)=>({
     card:{
         width:'330px',
         height:'160px',
@@ -18,6 +18,10 @@ const useStyles = makeStyles(()=>({
         "&:hover":{
             border:'1px solid #5A2120',
             cursor:'pointer'
+        },
+        [theme.breakpoints.down('xs')]:{
+          width:'250px',
+          height:'120px'
         }
     },
     cardContent:{
@@ -26,19 +30,27 @@ const useStyles = makeStyles(()=>({
         flexDirection:'row',
         "& *":{
             color:'#401817'
+        },
+        [theme.breakpoints.down('xs')]:{
+          margin:'15px 10px 0'
         }
     },
     imgCont:{
         width:'90px',
         "& img":{
-            width:'100%'
-            
+            width:'100%' 
+        },
+        [theme.breakpoints.down('xs')]:{
+          width:'65px'
         }
     },
     infoCard:{
         display:'flex',
         flexDirection:'column',
-        margin:'0px 0 0 20px'
+        margin:'0px 0 0 20px',
+        [theme.breakpoints.down('xs')]:{
+          fontSize:'13px'
+        }
     },
     nameCard:{
         fontWeight:'bold',
@@ -53,12 +65,18 @@ const useStyles = makeStyles(()=>({
     professionCard:{
         fontSize:'12px',
         margin:'5px 0 0',
-        textAlign:'left'
+        textAlign:'left',
+        [theme.breakpoints.down('xs')]:{
+          margin:'2px 0'
+        }
     },
     positionCard:{
         fontSize:'12px',
         margin:'5px 0 0',
-        textAlign:'left'
+        textAlign:'left',
+        [theme.breakpoints.down('xs')]:{
+          margin:'2px 0'
+        }
     },
     smContent:{
         margin: '0px auto'

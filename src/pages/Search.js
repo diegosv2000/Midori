@@ -6,15 +6,19 @@ import Header from 'components/Header';
 import logoUNI from 'images/UNI_logo.png';
 import 'css/fonts.css';
 
-const useStyles = makeStyles(()=>({
+const useStyles = makeStyles((theme)=>({
   search:{
     display:'flex',
     flexDirection:'column',
     width:'100%',
     margin:'80px 0 0 85px',
-    padding:'25px 0 0 60px',
+    padding:'25px 20px 0 60px',
     "& *":{
       fontFamily: 'Rubik, sans-serif'
+    },
+    [theme.breakpoints.down('xs')]:{
+      margin:'60px 25px 0',
+      padding:'25px 10px 0'
     }
   },
   info:{
@@ -32,7 +36,11 @@ const useStyles = makeStyles(()=>({
     flexDirection:'row',
     justifyContent:'space-between',
     margin:'30px 0 0',
-    width:'80%'
+    width:'80%',
+    [theme.breakpoints.down('sm')]:{
+        width:'100%',
+        background:'red'
+    }
   },
   elections:{
 
@@ -43,8 +51,12 @@ const useStyles = makeStyles(()=>({
     justifyContent:'center',
     "& div":{
       margin:'10px',
-
-      
+    },
+    [theme.breakpoints.down('md')]:{
+        width:'80%'
+    },
+    [theme.breakpoints.down('sm')]:{
+        width:'100%'
     }
   },
   imgCont:{
@@ -52,6 +64,9 @@ const useStyles = makeStyles(()=>({
     "& img":{
       width:"100%",
       opacity:'0.2'
+    },
+    [theme.breakpoints.down('md')]:{
+        display:'none'
     }
   }
 

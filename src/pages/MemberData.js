@@ -4,12 +4,15 @@ import {Navegation,Return,ListName,Header} from 'components'
 import perfil from 'images/perfil.jpg';
 import 'css/fonts.css';
 
-const useStyles = makeStyles(()=>({
+const useStyles = makeStyles((theme)=>({
     dataContainer:{
-        margin:'80px 0 0  85px ',
+        margin:'80px 20px 0  85px ',
         width:'100%',
         display:'flex',
-        flexDirection:'column'
+        flexDirection:'column',
+        [theme.breakpoints.down('xs')]:{
+            margin:'60px 10px'
+        }
     },
     titleElection:{
         margin:'20px 0 0',
@@ -26,7 +29,10 @@ const useStyles = makeStyles(()=>({
         border:'1px solid #5A2120',
         borderRadius:'10px',
         display:'flex',
-        flexDirection:'column'
+        flexDirection:'column',
+        [theme.breakpoints.down('xs')]:{
+            width:'95%'
+        }
     },
     headerData:{
         display:'flex',
@@ -40,6 +46,9 @@ const useStyles = makeStyles(()=>({
         width:'90px',
         "& img":{
             width:'100%'
+        },
+        [theme.breakpoints.down('xs')]:{
+            margin:'0 5px 0'
         }
     },
     generalData:{
@@ -57,12 +66,16 @@ const useStyles = makeStyles(()=>({
         width:'95%',
         margin:'0 auto 40px',
         background:'#FFEFC9',
-        padding:'0 0 20px'
+        padding:'0 0 20px',
+        [theme.breakpoints.down('xs')]:{
+            fontSize:'10px'
+        }
     },
     row:{
         display:'flex',
         flexDirection:'row',
         justifyContent:'space-between',
+        flexWrap:'wrap',
         margin:'15px 15px 0',
         borderBottom:'1px solid #C4C4C4',
         color:'#5A2120',

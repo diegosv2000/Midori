@@ -6,13 +6,16 @@ import Return from 'components/Return';
 import Card from 'components/Card';
 import Header from 'components/Header';
 
-const useStyles = makeStyles(()=>({
+const useStyles = makeStyles((theme)=>({
     members:{
         
-        margin:'81px 0 0 85px',
+        margin:'81px 20px 0 85px',
         width:'100%',
         display:'flex',
-        flexDirection:'column'
+        flexDirection:'column',
+        [theme.breakpoints.down('xs')]:{
+          margin:'61px 20px 0'
+        }
         
     },
     titleElection:{
@@ -20,7 +23,10 @@ const useStyles = makeStyles(()=>({
         textAlign:'center',
         fontSize:'40px',
         fontFamily: 'Rubik, sans-serif',
-        fontWeight:'bold'
+        fontWeight:'bold',
+        [theme.breakpoints.down('xs')]:{
+          fontSize:'30px'
+        }
     },
     subTitleElection:{
         width:'75%',
@@ -38,6 +44,10 @@ const useStyles = makeStyles(()=>({
             justifyContent:'center',
             alignItems:'center',
             margin:'0 5px'
+        },
+        [theme.breakpoints.down('xs')]:{
+          fontSize:'15px',
+          width:'85%'
         }
     },
     membersContainer:{

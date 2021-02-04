@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import './../css/fonts.css';
 
-const useStyles = makeStyles(()=>({
+const useStyles = makeStyles((theme)=>({
     listName:{
         width:'85px',
         height:'85px',
@@ -11,7 +11,10 @@ const useStyles = makeStyles(()=>({
         justifyContent:'center',
         alignItems: 'center',
         fontSize:'70px',
-        fontWeight:'bold'
+        fontWeight:'bold',
+        [theme.breakpoints.down('xs')]:{
+            margin:'0 0 0 5px'
+        }
     }
 }));
 

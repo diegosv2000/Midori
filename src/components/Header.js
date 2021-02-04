@@ -3,7 +3,7 @@ import React from 'react';
 import User from './User';
 import logo from './../images/logo.png'
 
-const useStyles = makeStyles(()=>({
+const useStyles = makeStyles((theme)=>({
     head:{
         display: 'flex',
         flexDirection: 'row',
@@ -11,12 +11,16 @@ const useStyles = makeStyles(()=>({
         position:'fixed',
         top:'0',
         width:'100%',
-        padding:'5px',
+        height:'70px',
+        padding:'5px 5px 5px 10px',
         background:'whitesmoke',
-        borderBottom:'1px solid #B9B9B9'
+        borderBottom:'1px solid #B9B9B9',
+        [theme.breakpoints.down('xs')]:{
+          height:'50px',
+        }
     },
     img:{
-        height: '70px'
+        height: '100%'
     }
 }));
 
@@ -24,10 +28,10 @@ const useStyles = makeStyles(()=>({
 const Header = () => {
   const classes = useStyles();
   return (
-    <div className={classes.head}>
+    <header className={classes.head}>
       <img src={logo} className={classes.img} />
       <User />
-    </div>
+    </header>
   );
 }
 
