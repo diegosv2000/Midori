@@ -1,13 +1,7 @@
 import React from 'react';
-import Welcome from './Welcome';
-import Search from './Search';
-import Lists from './Lists';
-import Members from './Members';
-import MemberData from './MemberData';
-import NotFound from './NotFound';
-import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
-
-
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import routes from './../routes';
+/* 
 
 const Home = () => {
 
@@ -44,6 +38,26 @@ const Home = () => {
     </Router>
     
     
+  );
+}
+
+export default Home;
+*/
+const Home = () => {
+
+  return (
+    
+    <Router>
+      <Switch>
+        {
+          routes.map(({ path, component }) => (
+            <Route key={path} exact path={path}>
+              {component}
+            </Route>
+          ))
+        }
+      </Switch>
+    </Router>
   );
 }
 

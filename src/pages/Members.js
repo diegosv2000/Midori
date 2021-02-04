@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import 'css/fonts.css';
 import Navegation from 'components/Navegation';
 import Return from 'components/Return';
@@ -67,8 +68,18 @@ const useStyles = makeStyles((theme)=>({
 
 }));
 
+
+
+
+
+
+
+
 const Members = () => {
   const classes = useStyles();
+ 
+
+
   return (
       <React.Fragment>
         <Header />
@@ -77,6 +88,8 @@ const Members = () => {
             <div className={classes.titleElection}>ELECCIONES RECTORALES 2021</div>
             <div className={classes.subTitleElection}>Integrantes de la lista <div>1</div> </div>
             <div className={classes.membersContainer}>
+                
+                
                 <div className={classes.cardContainer}>
                     <Card />
                 </div>
@@ -92,9 +105,8 @@ const Members = () => {
                 <div className={classes.cardContainer}>
                     <Card />
                 </div>
-                <div className={classes.cardContainer}>
-                    <Card />
-                </div>
+                   
+                
                 
             </div>
             <div className={classes.returnCont}><Return /></div>
