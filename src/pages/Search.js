@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Election from 'components/Election';
 import Navegation from 'components/Navegation';
 import Header from 'components/Header';
@@ -72,12 +72,12 @@ const useStyles = makeStyles((theme) => ({
 const Search = () => {
   const classes = useStyles();
   const [show, setShow] = useState(false);
-  const changeShow = () =>{
+  const changeShow = () => {
     setShow(!show);
-  }
+  };
   return (
     <React.Fragment>
-      <Header changeShow={changeShow} show={show}/>
+      <Header changeShow={changeShow} show={show} />
       <div className={classes.search}>
         <Navegation changeShow={changeShow} show={show} />
         <div className={classes.searchTitle}> Bienvenido DIEGO </div>

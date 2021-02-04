@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { Navegation, Return, ListName, Header } from 'components';
 import perfil from 'images/perfil.jpg';
 import 'css/fonts.css';
@@ -91,12 +91,12 @@ const useStyles = makeStyles((theme) => ({
 const Member = () => {
   const classes = useStyles();
   const [show, setShow] = useState(false);
-  const changeShow = () =>{
+  const changeShow = () => {
     setShow(!show);
-  }
+  };
   return (
     <React.Fragment>
-      <Header changeShow={changeShow} show={show}/>
+      <Header changeShow={changeShow} show={show} />
       <Navegation changeShow={changeShow} show={show} />
       <div className={classes.dataContainer}>
         <div className={classes.titleElection}>ELECCIONES RECTORALES 2021</div>

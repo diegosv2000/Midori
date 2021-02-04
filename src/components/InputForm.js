@@ -16,7 +16,7 @@ const useStyles = makeStyles(() => ({
       transition: '.3s',
       color: '#331212',
       textAlign: 'center',
-      textTransform: 'uppercase'
+      textTransform: 'uppercase',
     },
     '& label': {
       position: 'absolute',
@@ -47,25 +47,22 @@ const useStyles = makeStyles(() => ({
       color: '#5A2120',
     },
   },
-  verif:{
-    color:'red',
-    fontSize:'12px',
-    display:'none'
-  }
+  verif: {
+    color: 'red',
+    fontSize: '12px',
+    display: 'none',
+  },
 }));
 const InputForm = (props) => {
   const classes = useStyles();
 
   return (
     <div className={classes.inputContainer}>
-      <input
-        type={props.type}
-        maxLength="9"
-        id="codeUni"
-        required
-      />
+      <input type={props.type} maxLength="9" id="codeUni" required />
       <label>{props.label}</label>
-      <div className={classes.verif} id="verif">*Ingresa correctamente el código</div>
+      <div className={classes.verif} id="verif">
+        *Ingresa correctamente el código
+      </div>
     </div>
   );
 };

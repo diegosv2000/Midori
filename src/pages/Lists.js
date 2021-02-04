@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import List from 'components/List';
 import 'css/fonts.css';
 import Navegation from 'components/Navegation';
@@ -34,21 +34,21 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     flexWrap: 'wrap',
   },
-  returnContent:{
-    textAlign:'center',
-    margin:'0 0 30px'
-  }
+  returnContent: {
+    textAlign: 'center',
+    margin: '0 0 30px',
+  },
 }));
 
 const Lists = () => {
   const classes = useStyles();
   const [show, setShow] = useState(false);
-  const changeShow = () =>{
+  const changeShow = () => {
     setShow(!show);
-  }
+  };
   return (
     <React.Fragment>
-      <Header changeShow={changeShow} show={show}/>
+      <Header changeShow={changeShow} show={show} />
       <Navegation changeShow={changeShow} show={show} />
       <div className={classes.lists}>
         <div className={classes.titleElection}>ELECCIONES RECTORALES 2021</div>

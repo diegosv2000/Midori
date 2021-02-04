@@ -13,21 +13,23 @@ const useStyles = makeStyles((theme) => ({
     color: '#5A2120',
     outline: 'none',
     display: 'block',
-    "&:hover":{
-      cursor:'pointer'
-    }
+    '&:hover': {
+      cursor: 'pointer',
+    },
   },
 }));
 
-const User = props => {
+const User = (props) => {
   const classes = useStyles();
 
   return (
     <React.Fragment>
       <button className={classes.menu} onClick={props.changeShow}>
-        {
-          (!props.show)?<FontAwesomeIcon icon={faBars} />:<FontAwesomeIcon icon={faTimes} />
-        }
+        {!props.show ? (
+          <FontAwesomeIcon icon={faBars} />
+        ) : (
+          <FontAwesomeIcon icon={faTimes} />
+        )}
       </button>
     </React.Fragment>
   );

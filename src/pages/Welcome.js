@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 import InputForm from 'components/InputForm';
 import Header from 'components/Header';
@@ -67,13 +67,14 @@ const useStyles = makeStyles((theme) => ({
 const Welcome = () => {
   const classes = useStyles();
   const history = useHistory();
-  const SendCode = () => {
-    let codeUni = document.getElementById("codeUni").value;
-    if( isAValidCodeByRule(codeUni,'uni') ){
-      document.getElementById('verif').style.display='none'
+  const SendCode = (e) => {
+    e.preventDefault();
+    let codeUni = document.getElementById('codeUni').value;
+    if (isAValidCodeByRule(codeUni, 'uni')) {
+      document.getElementById('verif').style.display = 'none';
       history.push('/elections');
-    }else{
-      document.getElementById('verif').style.display='block';
+    } else {
+      document.getElementById('verif').style.display = 'block';
     }
   };
   return (
@@ -89,9 +90,7 @@ const Welcome = () => {
         </p>
         <form className={classes.inputHome} onSubmit={SendCode}>
           <InputForm type="text" label="CÓDIGO" />
-          <button type="submit" onClick={SendCode}>
-            Ingresar
-          </button>
+          <button onClick={SendCode}>Ingresar</button>
         </form>
       </div>
     </React.Fragment>

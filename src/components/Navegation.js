@@ -7,7 +7,6 @@ import './../css/fonts.css';
 import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
-
   navBar: {
     padding: '40px 0 0 0',
     display: 'flex',
@@ -62,27 +61,24 @@ const Navegation = (props) => {
   const history = useHistory();
 
   return (
-    
-
-      <nav
-        className={classes.navBar}
-        style={!props.show ? { left: '-85px' } : { left: '0' }}
+    <nav
+      className={classes.navBar}
+      style={!props.show ? { left: '-85px' } : { left: '0' }}
+    >
+      <button
+        className={classes.buttonNav}
+        onClick={() => history.push('/elections')}
       >
-        <button
-          className={classes.buttonNav}
-          onClick={() => (history.push('/elections'))}
-        >
-          {' '}
-          <FontAwesomeIcon icon={faHome} className={classes.icon} />{' '}
-          <div>Inicio</div>
-        </button>
-        <button className={classes.buttonNav} onClick={() => (history.push('/'))}>
-          {' '}
-          <FontAwesomeIcon icon={faSignOutAlt} className={classes.icon} />{' '}
-          <div>Cambiar código</div>
-        </button>
-      </nav>
-    
+        {' '}
+        <FontAwesomeIcon icon={faHome} className={classes.icon} />{' '}
+        <div>Inicio</div>
+      </button>
+      <button className={classes.buttonNav} onClick={() => history.push('/')}>
+        {' '}
+        <FontAwesomeIcon icon={faSignOutAlt} className={classes.icon} />{' '}
+        <div>Cambiar código</div>
+      </button>
+    </nav>
   );
 };
 
