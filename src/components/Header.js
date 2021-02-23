@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import User from './User';
-import logo from './../images/logo.png';
+
 
 const useStyles = makeStyles((theme) => ({
   head: {
@@ -28,7 +28,7 @@ const Header = (props) => {
   const classes = useStyles();
   return (
     <header className={classes.head}>
-      <img src={logo} className={classes.img} alt="logo_VI" />
+      <img src="https://i.ibb.co/8sDtzQj/logo.png" className={classes.img} alt="logo_VI" />
       {props.seeMenu ? (
         <User changeShow={props.changeShow} show={props.show} />
       ) : (

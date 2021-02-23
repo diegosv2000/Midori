@@ -1,9 +1,8 @@
 import { makeStyles } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { Navegation, Return, ListName, Header } from 'components';
-import perfil from 'images/perfil.jpg';
 import 'css/fonts.css';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
@@ -181,6 +180,7 @@ const Member = () => {
           <Return />
         </div>
       </div>
+      {localStorage.getItem('CODEUNI') ? '' : <Redirect to="/" />}
     </React.Fragment>
   );
 };

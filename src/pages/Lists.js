@@ -5,7 +5,7 @@ import 'css/fonts.css';
 import Navegation from 'components/Navegation';
 import Header from 'components/Header';
 import { Return } from 'components';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   lists: {
@@ -69,6 +69,7 @@ const Lists = () => {
           <Return />
         </div>
       </div>
+      {localStorage.getItem('CODEUNI') ? '' : <Redirect to="/" />}
     </React.Fragment>
   );
 };

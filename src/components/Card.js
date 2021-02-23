@@ -2,7 +2,6 @@ import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import './../css/fonts.css';
-import perfil from './../images/perfil.jpg';
 import SeeMore from './SeeMore';
 
 const useStyles = makeStyles((theme) => ({
@@ -107,7 +106,7 @@ const Card = (props) => {
             {props.specialty}
           </div>
           <div className={classes.positionCard}>
-            <strong>Cargo: </strong> {props.positionCard}
+            <strong>Cargo: </strong> PRESIDENTE
           </div>
         </div>
       </div>

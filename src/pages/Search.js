@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import Election from 'components/Election';
 import Navegation from 'components/Navegation';
 import Header from 'components/Header';
-import logoUNI from 'images/UNI_logo.png';
 import 'css/fonts.css';
+import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -59,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
   imgCont: {
     width: '400px',
+
     '& img': {
       width: '100%',
       opacity: '0.2',
@@ -104,10 +105,12 @@ const Search = () => {
             })}
           </div>
           <div className={classes.imgCont}>
-            <img src={logoUNI} alt="logo uni" />
+            <img src="https://i.ibb.co/YXhrdmC/UNI-logo.png" alt="logo uni" />
           </div>
         </div>
       </div>
+
+      {localStorage.getItem('CODEUNI') ? '' : <Redirect to="/" />}
     </React.Fragment>
   );
 };

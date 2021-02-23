@@ -6,6 +6,7 @@ import './../css/fonts.css';
 const useStyles = makeStyles(() => ({
   election: {
     border: '1px solid #5A2120',
+    margin:'0',
     width: '170px',
     height: '155px',
     color: '#5A2120',

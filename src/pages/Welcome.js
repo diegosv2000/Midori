@@ -78,7 +78,6 @@ const Welcome = () => {
     const code = codeUni;
     if (isAValidCodeByRule(code.toUpperCase(), 'uni')) {
       localStorage.setItem('CODEUNI', code);
-      console.log('Mostrar: ' + localStorage.getItem('CODEUNI'));
       history.push('/elections');
     } else {
       setVerifCode(true);

@@ -6,7 +6,7 @@ import Navegation from 'components/Navegation';
 import Return from 'components/Return';
 import Card from 'components/Card';
 import Header from 'components/Header';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
@@ -123,6 +123,7 @@ const Members = () => {
           <Return />
         </div>
       </div>
+      {localStorage.getItem('CODEUNI') ? '' : <Redirect to="/" />}
     </React.Fragment>
   );
 };

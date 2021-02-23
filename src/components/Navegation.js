@@ -59,7 +59,10 @@ const useStyles = makeStyles((theme) => ({
 const Navegation = (props) => {
   const classes = useStyles();
   const history = useHistory();
-
+  const removeCode = () => {
+    localStorage.removeItem('CODEUNI');
+    history.push('/');
+  };
   return (
     <nav
       className={classes.navBar}
@@ -72,7 +75,7 @@ const Navegation = (props) => {
         <FontAwesomeIcon icon={faHome} className={classes.icon} />
         <div>Inicio</div>
       </button>
-      <button className={classes.buttonNav} onClick={() => history.push('/')}>
+      <button className={classes.buttonNav} onClick={removeCode}>
         <FontAwesomeIcon icon={faSignOutAlt} className={classes.icon} />
         <div>Cambiar código</div>
       </button>
