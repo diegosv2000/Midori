@@ -67,19 +67,26 @@ const useStyles = makeStyles((theme) => ({
 const Welcome = () => {
   const classes = useStyles();
   const history = useHistory();
+  const [verifCode, setVerifCode] = useState(false);
+  const [codeUni, setCodeUni] = useState('');
+  const onChange = (e) => {
+    e.preventDefault();
+    setCodeUni(e.target.value);
+  };
   const SendCode = (e) => {
     e.preventDefault();
-    const codeUni = document.getElementById('codeUni').value;
-    if (isAValidCodeByRule(codeUni.toUpperCase(), 'uni')) {
-      document.getElementById('verif').style.display = 'none';
+    const code = codeUni;
+    if (isAValidCodeByRule(code.toUpperCase(), 'uni')) {
+      localStorage.setItem('CODEUNI', code);
+      console.log('Mostrar: ' + localStorage.getItem('CODEUNI'));
       history.push('/elections');
     } else {
-      document.getElementById('verif').style.display = 'block';
+      setVerifCode(true);
     }
   };
   return (
     <React.Fragment>
-      <Header />
+      <Header seeMenu={false} />
       <div className={classes.home}>
         <h2 className={classes.welcome}>Bienvenid@</h2>
         <p className={classes.info}>
@@ -89,7 +96,12 @@ const Welcome = () => {
           en las Elecciones Generales UNI 2021.
         </p>
         <form className={classes.inputHome} onSubmit={SendCode}>
-          <InputForm type="text" label="CÓDIGO" />
+          <InputForm
+            type="text"
+            label="CÓDIGO"
+            showMessage={verifCode}
+            onChange={onChange}
+          />
           <button onClick={SendCode}>Ingresar</button>
         </form>
       </div>

@@ -13,17 +13,20 @@ const routes = [
     exact: true,
   },
   {
-    path: '/lists',
+    // lists => elections/:election/lists
+    path: '/elections/:election/lists',
     component: () => <Lists />,
     exact: true,
   },
   {
-    path: '/members',
+    // members => /elections/:election/lists/:list/
+    path: '/elections/:election/lists/:list',
     component: () => <Members />,
     exact: true,
   },
   {
-    path: '/member',
+    // member =>
+    path: '/elections/:election/lists/:list/:member',
     component: () => <MemberData />,
     exact: true,
   },

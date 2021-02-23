@@ -58,9 +58,9 @@ const InputForm = (props) => {
 
   return (
     <div className={classes.inputContainer}>
-      <input type={props.type} maxLength="9" id="codeUni" required />
+      <input type={props.type} maxLength="9" id="codeUni" onChange={props.onChange} required />
       <label>{props.label}</label>
-      <div className={classes.verif} id="verif">
+      <div className={classes.verif} style={(props.showMessage)?{display:'block'}:{display:'none'}}>
         *Ingresa correctamente el código
       </div>
     </div>

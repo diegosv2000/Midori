@@ -5,6 +5,7 @@ import 'css/fonts.css';
 import Navegation from 'components/Navegation';
 import Header from 'components/Header';
 import { Return } from 'components';
+import { useParams } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   lists: {
@@ -39,28 +40,30 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 0 30px',
   },
 }));
-
+const listsOfElection = [1, 2, 3, 4, 5, 6];
+const typeOfElection = [
+  'ELECCIONES RECTORALES 2021',
+  'ELECCIONES DE DECANOS',
+  'ELECCIONES ASAMBLEA DE DOCENTES',
+  'ELECCIONES DE CONSEJO DE FACULTAD',
+];
 const Lists = () => {
   const classes = useStyles();
   const [show, setShow] = useState(false);
+  const { election } = useParams();
   const changeShow = () => {
     setShow(!show);
   };
   return (
     <React.Fragment>
-      <Header changeShow={changeShow} show={show} />
+      <Header changeShow={changeShow} show={show} seeMenu={true} />
       <Navegation changeShow={changeShow} show={show} />
       <div className={classes.lists}>
-        <div className={classes.titleElection}>ELECCIONES RECTORALES 2021</div>
+        <div className={classes.titleElection}>{typeOfElection[election]}</div>
         <div className={classes.listsContainer}>
-          <List />
-          <List />
-          <List />
-          <List />
-          <List />
-          <List />
-          <List />
-          <List />
+          {listsOfElection.map((e) => {
+            return <List key={e} list={e} election={election} />;
+          })}
         </div>
         <div className={classes.returnContent}>
           <Return />

@@ -29,7 +29,11 @@ const Header = (props) => {
   return (
     <header className={classes.head}>
       <img src={logo} className={classes.img} alt="logo_VI" />
-      <User changeShow={props.changeShow} show={props.show} />
+      {props.seeMenu ? (
+        <User changeShow={props.changeShow} show={props.show} />
+      ) : (
+        ''
+      )}
     </header>
   );
 };

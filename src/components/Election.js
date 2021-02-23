@@ -27,9 +27,12 @@ const useStyles = makeStyles(() => ({
 const Election = (props) => {
   const classes = useStyles();
   const history = useHistory();
-
+  const goTolists = () =>{
+    let index = props.index;
+    history.push(`/elections/${index}/lists`)
+  }
   return (
-    <button className={classes.election} onClick={() => history.push('/lists')}>
+    <button className={classes.election} onClick={goTolists}>
       {props.text}
     </button>
   );

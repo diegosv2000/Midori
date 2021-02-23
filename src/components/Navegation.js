@@ -69,13 +69,11 @@ const Navegation = (props) => {
         className={classes.buttonNav}
         onClick={() => history.push('/elections')}
       >
-        {' '}
-        <FontAwesomeIcon icon={faHome} className={classes.icon} />{' '}
+        <FontAwesomeIcon icon={faHome} className={classes.icon} />
         <div>Inicio</div>
       </button>
       <button className={classes.buttonNav} onClick={() => history.push('/')}>
-        {' '}
-        <FontAwesomeIcon icon={faSignOutAlt} className={classes.icon} />{' '}
+        <FontAwesomeIcon icon={faSignOutAlt} className={classes.icon} />
         <div>Cambiar código</div>
       </button>
     </nav>

@@ -1,8 +1,10 @@
 import { makeStyles } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navegation, Return, ListName, Header } from 'components';
 import perfil from 'images/perfil.jpg';
 import 'css/fonts.css';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   dataContainer: {
@@ -88,25 +90,50 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const typeOfElection = [
+  'ELECCIONES RECTORALES 2021',
+  'ELECCIONES DE DECANOS',
+  'ELECCIONES ASAMBLEA DE DOCENTES',
+  'ELECCIONES DE CONSEJO DE FACULTAD',
+];
+
 const Member = () => {
   const classes = useStyles();
   const [show, setShow] = useState(false);
+  const [dataUNI, setDataUNI] = useState([]);
   const changeShow = () => {
     setShow(!show);
   };
+  const { election, list, member } = useParams();
+  useEffect(() => {
+    if (dataUNI.length === 0) {
+      axios
+        .get(
+          'https://raw.githubusercontent.com/diegosv2000/midori-data/main/data.json'
+        )
+        .then((res) => {
+          //setDataUNI(res.data);
+          res.data.map((e) => {
+            if (member == e.code) {
+              setDataUNI(e);
+            }
+          });
+        });
+    }
+  }, [dataUNI]);
   return (
     <React.Fragment>
-      <Header changeShow={changeShow} show={show} />
+      <Header changeShow={changeShow} show={show} seeMenu={true} />
       <Navegation changeShow={changeShow} show={show} />
       <div className={classes.dataContainer}>
-        <div className={classes.titleElection}>ELECCIONES RECTORALES 2021</div>
+        <div className={classes.titleElection}>{typeOfElection[election]}</div>
 
         <div className={classes.dataMember}>
           <div className={classes.headerData}>
             <div className={classes.imgCont}>
-              <img src={perfil} alt="perfil" />
+              <img src={dataUNI.photo} alt="perfil" />
             </div>
-            <ListName />
+            <ListName list={list} />
           </div>
           <div className={classes.generalData}>
             <div>DATOS GENERALES</div>
@@ -115,28 +142,31 @@ const Member = () => {
           <div className={classes.infoMember}>
             <div className={classes.row}>
               <div className={classes.fullName}>
-                <strong>Apellidos y Nombres: </strong> ANDRES MIGUEL SAAVEDRA
-                SANCHEZ
+                <strong>Apellidos y Nombres: </strong> {dataUNI.name}
+                {dataUNI.lname}
               </div>
               <div className={classes.gender}>
-                <strong>Sexo: </strong> MASCULINO
+                <strong>Sexo: </strong> {dataUNI.gender}
               </div>
             </div>
             <div className={classes.row}>
               <div className={classes.codeMember}>
-                <strong>Código: </strong>20126474A
+                <strong>Código: </strong>
+                {dataUNI.code}
               </div>
               <div className={classes.professionMember}>
-                <strong>Carrera: </strong>INGENIERIA GEOLÓGICA
+                <strong>Carrera: </strong>
+                {dataUNI.specialty}
               </div>
               <div className={classes.conditionMember}>
-                <strong>Condición: </strong>Estudiante
+                <strong>Condición: </strong>
+                {dataUNI.condition}
               </div>
             </div>
             <div className={classes.row}>
               <div className={classes.facultyMember}>
-                <strong>Facultad: </strong>INGENIERÍA GEOLÓGICA, MINERA Y
-                METALÚRGICA
+                <strong>Facultad: </strong>
+                {dataUNI.faculty}
               </div>
             </div>
             <div className={classes.row}>

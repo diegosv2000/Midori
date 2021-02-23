@@ -84,23 +84,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Card = () => {
+const Card = (props) => {
   const classes = useStyles();
   const history = useHistory();
+
+  const goToStudentData = () => {
+    history.push(
+      `/elections/${props.election}/lists/${props.list}/${props.code}`
+    );
+  };
   return (
-    <button className={classes.card} onClick={() => history.push('/member')}>
+    <button className={classes.card} onClick={goToStudentData}>
       <div className={classes.cardContent}>
         <div className={classes.imgCont}>
-          <img src={perfil} alt="img" />
+          <img src={props.photo} alt="img" />
         </div>
         <div className={classes.infoCard}>
-          <div className={classes.nameCard}>Andrés Miguel</div>
-          <div className={classes.lnameCard}>Saavedra Sanchez</div>
+          <div className={classes.nameCard}>{props.name}</div>
+          <div className={classes.lnameCard}>{props.lname}</div>
           <div className={classes.professionCard}>
-            <strong>Carrera: </strong>Ing. Físico
+            <strong>Carrera: </strong>
+            {props.specialty}
           </div>
           <div className={classes.positionCard}>
-            <strong>Cargo: </strong> Presidente
+            <strong>Cargo: </strong> {props.positionCard}
           </div>
         </div>
       </div>

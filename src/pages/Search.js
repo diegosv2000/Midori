@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     '& *': {
       fontFamily: 'Rubik, sans-serif',
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       margin: '60px 25px 0',
       padding: '25px 10px 0',
     },
@@ -68,7 +68,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
+const typeOfElection = [
+  'ELECCIONES RECTORALES 2021',
+  'ELECCIONES DE DECANOS',
+  'ELECCIONES ASAMBLEA DE DOCENTES',
+  'ELECCIONES DE CONSEJO DE FACULTAD',
+];
 const Search = () => {
   const classes = useStyles();
   const [show, setShow] = useState(false);
@@ -77,7 +82,7 @@ const Search = () => {
   };
   return (
     <React.Fragment>
-      <Header changeShow={changeShow} show={show} />
+      <Header changeShow={changeShow} show={show} seeMenu={true} />
       <div className={classes.search}>
         <Navegation changeShow={changeShow} show={show} />
         <div className={classes.searchTitle}> Bienvenido DIEGO </div>
@@ -90,18 +95,13 @@ const Search = () => {
         </div>
         <div className={classes.electionsContainer}>
           <div className={classes.elections}>
-            <div>
-              <Election text="ELECCIONES RECTORALES 2021" />
-            </div>
-            <div>
-              <Election text="ELECCIONES RECTORALES 2021" />
-            </div>
-            <div>
-              <Election text="ELECCIONES RECTORALES 2021" />
-            </div>
-            <div>
-              <Election text="ELECCIONES RECTORALES 2021" />
-            </div>
+            {typeOfElection.map((e, index) => {
+              return (
+                <div key={e}>
+                  <Election text={e} index={index} />
+                </div>
+              );
+            })}
           </div>
           <div className={classes.imgCont}>
             <img src={logoUNI} alt="logo uni" />

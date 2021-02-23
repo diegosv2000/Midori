@@ -18,9 +18,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ListName = () => {
+const ListName = (props) => {
   const classes = useStyles();
-  return <div className={classes.listName}>1</div>;
+  return <div className={classes.listName}>{props.list}</div>;
 };
 
 export default ListName;
