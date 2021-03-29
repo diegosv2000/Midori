@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 import InputForm from 'components/InputForm';
 import Header from 'components/Header';
 import { isAValidCodeByRule } from './../regex';
 import { useHistory } from 'react-router-dom';
+import Spinner from 'components/Loading/Spinner';
 
 const useStyles = makeStyles((theme) => ({
   home: {
@@ -83,29 +84,40 @@ const Welcome = () => {
       setVerifCode(true);
     }
   };
-  return (
-    <React.Fragment>
-      <Header seeMenu={false} />
-      <div className={classes.home}>
-        <h2 className={classes.welcome}>Bienvenid@</h2>
-        <p className={classes.info}>
-          a <strong>Voto Informado</strong> UNI, gracias por visitar nuestra
-          página web. Este portal te brinda información sobre las hojas de vida,
-          experiencia laboral y política de las y los candidatos que participan
-          en las Elecciones Generales UNI 2021.
-        </p>
-        <form className={classes.inputHome} onSubmit={SendCode}>
-          <InputForm
-            type="text"
-            label="CÓDIGO"
-            showMessage={verifCode}
-            onChange={onChange}
-          />
-          <button onClick={SendCode}>Ingresar</button>
-        </form>
-      </div>
-    </React.Fragment>
-  );
+  const [load, setLoad] = useState(null);
+  const loadingView = () => {
+    setLoad(true);
+  };
+  useEffect(() => {
+    loadingView();
+  }, []);
+  if (load === null) {
+    return <Spinner />;
+  } else {
+    return (
+      <React.Fragment>
+        <Header seeMenu={false} />
+        <div className={classes.home}>
+          <h2 className={classes.welcome}>Bienvenid@</h2>
+          <p className={classes.info}>
+            a <strong>Voto Informado</strong> UNI, gracias por visitar nuestra
+            página web. Este portal te brinda información sobre las hojas de
+            vida, experiencia laboral y política de las y los candidatos que
+            participan en las Elecciones Generales UNI 2021.
+          </p>
+          <form className={classes.inputHome} onSubmit={SendCode}>
+            <InputForm
+              type="text"
+              label="CÓDIGO"
+              showMessage={verifCode}
+              onChange={onChange}
+            />
+            <button onClick={SendCode}>Ingresar</button>
+          </form>
+        </div>
+      </React.Fragment>
+    );
+  }
 };
 
 export default Welcome;

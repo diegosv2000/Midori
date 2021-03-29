@@ -6,6 +6,7 @@ import Navegation from 'components/Navegation';
 import Return from 'components/Return';
 import Card from 'components/Card';
 import Header from 'components/Header';
+import Spinner from 'components/Loading/Spinner';
 import { Redirect, useParams } from 'react-router-dom';
 import axios from 'axios';
 
@@ -81,7 +82,12 @@ const Members = () => {
     setShow(!show);
   };
   const { election, list } = useParams();
+  const [load, setLoad] = useState(null);
+  const loadingView = () => {
+    setLoad(true);
+  };
   useEffect(() => {
+    loadingView();
     if (dataUNI.length === 0) {
       axios
         .get(
@@ -92,40 +98,46 @@ const Members = () => {
         });
     }
   }, [dataUNI]);
-  return (
-    <React.Fragment>
-      <Header changeShow={changeShow} show={show} seeMenu={true} />
-      <Navegation changeShow={changeShow} show={show} />
-      <div className={classes.members}>
-        <div className={classes.titleElection}>{typeOfElection[election]}</div>
-        <div className={classes.subTitleElection}>
-          Integrantes de la lista <div>{list}</div>{' '}
+  if (load === null) {
+    return <Spinner />;
+  } else {
+    return (
+      <React.Fragment>
+        <Header changeShow={changeShow} show={show} seeMenu={true} />
+        <Navegation changeShow={changeShow} show={show} />
+        <div className={classes.members}>
+          <div className={classes.titleElection}>
+            {typeOfElection[election]}
+          </div>
+          <div className={classes.subTitleElection}>
+            Integrantes de la lista <div>{list}</div>{' '}
+          </div>
+          <div className={classes.membersContainer}>
+            {dataUNI.map((e) => {
+              return (
+                <div key={e.code} className={classes.cardContainer}>
+                  <Card
+                    code={e.code}
+                    name={e.name}
+                    lname={e.lname}
+                    specialty={e.specialty}
+                    position="PRESIDENTE"
+                    election={election}
+                    list={list}
+                    photo={e.photo}
+                  />
+                </div>
+              );
+            })}
+          </div>
+          <div className={classes.returnCont}>
+            <Return />
+          </div>
         </div>
-        <div className={classes.membersContainer}>
-          {dataUNI.map((e) => {
-            return (
-              <div key={e.code} className={classes.cardContainer}>
-                <Card
-                  code={e.code}
-                  name={e.name}
-                  lname={e.lname}
-                  specialty={e.specialty}
-                  position="PRESIDENTE"
-                  election={election}
-                  list={list}
-                  photo={e.photo}
-                />
-              </div>
-            );
-          })}
-        </div>
-        <div className={classes.returnCont}>
-          <Return />
-        </div>
-      </div>
-      {localStorage.getItem('CODEUNI') ? '' : <Redirect to="/" />}
-    </React.Fragment>
-  );
+        {localStorage.getItem('CODEUNI') ? '' : <Redirect to="/" />}
+      </React.Fragment>
+    );
+  }
 };
 
 export default Members;

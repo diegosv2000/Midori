@@ -1,11 +1,11 @@
 import { makeStyles } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Election from 'components/Election';
 import Navegation from 'components/Navegation';
 import Header from 'components/Header';
 import 'css/fonts.css';
 import { Redirect } from 'react-router-dom';
-
+import Spinner from 'components/Loading/Spinner';
 const useStyles = makeStyles((theme) => ({
   search: {
     display: 'flex',
@@ -81,38 +81,49 @@ const Search = () => {
   const changeShow = () => {
     setShow(!show);
   };
-  return (
-    <React.Fragment>
-      <Header changeShow={changeShow} show={show} seeMenu={true} />
-      <div className={classes.search}>
-        <Navegation changeShow={changeShow} show={show} />
-        <div className={classes.searchTitle}> Bienvenido DIEGO </div>
-        <div className={classes.info}>
-          Informate sobre tus candidatos en las proximas elecciones para tener
-          un <strong>VOTO CONSCIENTE</strong>
-        </div>
-        <div className={classes.electionTitle}>
-          Usted participa en las siguientes elecciones
-        </div>
-        <div className={classes.electionsContainer}>
-          <div className={classes.elections}>
-            {typeOfElection.map((e, index) => {
-              return (
-                <div key={e}>
-                  <Election text={e} index={index} />
-                </div>
-              );
-            })}
+  const [load, setLoad] = useState(null);
+  const loadingView = () => {
+    setLoad(true);
+  };
+  useEffect(() => {
+    loadingView();
+  });
+  if (load === null) {
+    return <Spinner />;
+  } else {
+    return (
+      <React.Fragment>
+        <Header changeShow={changeShow} show={show} seeMenu={true} />
+        <div className={classes.search}>
+          <Navegation changeShow={changeShow} show={show} />
+          <div className={classes.searchTitle}> Bienvenido DIEGO </div>
+          <div className={classes.info}>
+            Informate sobre tus candidatos en las proximas elecciones para tener
+            un <strong>VOTO CONSCIENTE</strong>
           </div>
-          <div className={classes.imgCont}>
-            <img src="https://i.ibb.co/YXhrdmC/UNI-logo.png" alt="logo uni" />
+          <div className={classes.electionTitle}>
+            Usted participa en las siguientes elecciones
+          </div>
+          <div className={classes.electionsContainer}>
+            <div className={classes.elections}>
+              {typeOfElection.map((e, index) => {
+                return (
+                  <div key={e}>
+                    <Election text={e} index={index} />
+                  </div>
+                );
+              })}
+            </div>
+            <div className={classes.imgCont}>
+              <img src="https://i.ibb.co/YXhrdmC/UNI-logo.png" alt="logo uni" />
+            </div>
           </div>
         </div>
-      </div>
 
-      {localStorage.getItem('CODEUNI') ? '' : <Redirect to="/" />}
-    </React.Fragment>
-  );
+        {localStorage.getItem('CODEUNI') ? '' : <Redirect to="/" />}
+      </React.Fragment>
+    );
+  }
 };
 
 export default Search;

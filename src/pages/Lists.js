@@ -1,12 +1,12 @@
 import { makeStyles } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import List from 'components/List';
 import 'css/fonts.css';
 import Navegation from 'components/Navegation';
 import Header from 'components/Header';
 import { Return } from 'components';
 import { Redirect, useParams } from 'react-router-dom';
-
+import Spinner from 'components/Loading/Spinner';
 const useStyles = makeStyles((theme) => ({
   lists: {
     margin: '81px 20px 0 85px',
@@ -54,24 +54,37 @@ const Lists = () => {
   const changeShow = () => {
     setShow(!show);
   };
-  return (
-    <React.Fragment>
-      <Header changeShow={changeShow} show={show} seeMenu={true} />
-      <Navegation changeShow={changeShow} show={show} />
-      <div className={classes.lists}>
-        <div className={classes.titleElection}>{typeOfElection[election]}</div>
-        <div className={classes.listsContainer}>
-          {listsOfElection.map((e) => {
-            return <List key={e} list={e} election={election} />;
-          })}
+  const [load, setLoad] = useState(null);
+  const loadingView = () => {
+    setLoad(true);
+  };
+  useEffect(() => {
+    loadingView();
+  }, []);
+  if (load === null) {
+    return <Spinner />;
+  } else {
+    return (
+      <React.Fragment>
+        <Header changeShow={changeShow} show={show} seeMenu={true} />
+        <Navegation changeShow={changeShow} show={show} />
+        <div className={classes.lists}>
+          <div className={classes.titleElection}>
+            {typeOfElection[election]}
+          </div>
+          <div className={classes.listsContainer}>
+            {listsOfElection.map((e) => {
+              return <List key={e} list={e} election={election} />;
+            })}
+          </div>
+          <div className={classes.returnContent}>
+            <Return />
+          </div>
         </div>
-        <div className={classes.returnContent}>
-          <Return />
-        </div>
-      </div>
-      {localStorage.getItem('CODEUNI') ? '' : <Redirect to="/" />}
-    </React.Fragment>
-  );
+        {localStorage.getItem('CODEUNI') ? '' : <Redirect to="/" />}
+      </React.Fragment>
+    );
+  }
 };
 
 export default Lists;

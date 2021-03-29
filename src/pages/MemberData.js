@@ -4,6 +4,7 @@ import { Navegation, Return, ListName, Header } from 'components';
 import 'css/fonts.css';
 import { Redirect, useParams } from 'react-router-dom';
 import axios from 'axios';
+import Spinner from 'components/Loading/Spinner';
 
 const useStyles = makeStyles((theme) => ({
   dataContainer: {
@@ -104,7 +105,12 @@ const Member = () => {
     setShow(!show);
   };
   const { election, list, member } = useParams();
+  const [load, setLoad] = useState(null);
+  const loadingView = () => {
+    setLoad(true);
+  };
   useEffect(() => {
+    loadingView();
     if (dataUNI.length === 0) {
       axios
         .get(
@@ -120,69 +126,75 @@ const Member = () => {
         });
     }
   }, [dataUNI]);
-  return (
-    <React.Fragment>
-      <Header changeShow={changeShow} show={show} seeMenu={true} />
-      <Navegation changeShow={changeShow} show={show} />
-      <div className={classes.dataContainer}>
-        <div className={classes.titleElection}>{typeOfElection[election]}</div>
-
-        <div className={classes.dataMember}>
-          <div className={classes.headerData}>
-            <div className={classes.imgCont}>
-              <img src={dataUNI.photo} alt="perfil" />
-            </div>
-            <ListName list={list} />
-          </div>
-          <div className={classes.generalData}>
-            <div>DATOS GENERALES</div>
+  if (load === null) {
+    return <Spinner />;
+  } else {
+    return (
+      <React.Fragment>
+        <Header changeShow={changeShow} show={show} seeMenu={true} />
+        <Navegation changeShow={changeShow} show={show} />
+        <div className={classes.dataContainer}>
+          <div className={classes.titleElection}>
+            {typeOfElection[election]}
           </div>
 
-          <div className={classes.infoMember}>
-            <div className={classes.row}>
-              <div className={classes.fullName}>
-                <strong>Apellidos y Nombres: </strong> {dataUNI.name}
-                {dataUNI.lname}
+          <div className={classes.dataMember}>
+            <div className={classes.headerData}>
+              <div className={classes.imgCont}>
+                <img src={dataUNI.photo} alt="perfil" />
               </div>
-              <div className={classes.gender}>
-                <strong>Sexo: </strong> {dataUNI.gender}
+              <ListName list={list} />
+            </div>
+            <div className={classes.generalData}>
+              <div>DATOS GENERALES</div>
+            </div>
+
+            <div className={classes.infoMember}>
+              <div className={classes.row}>
+                <div className={classes.fullName}>
+                  <strong>Apellidos y Nombres: </strong> {dataUNI.name}
+                  {dataUNI.lname}
+                </div>
+                <div className={classes.gender}>
+                  <strong>Sexo: </strong> {dataUNI.gender}
+                </div>
+              </div>
+              <div className={classes.row}>
+                <div className={classes.codeMember}>
+                  <strong>Código: </strong>
+                  {dataUNI.code}
+                </div>
+                <div className={classes.professionMember}>
+                  <strong>Carrera: </strong>
+                  {dataUNI.specialty}
+                </div>
+                <div className={classes.conditionMember}>
+                  <strong>Condición: </strong>
+                  {dataUNI.condition}
+                </div>
+              </div>
+              <div className={classes.row}>
+                <div className={classes.facultyMember}>
+                  <strong>Facultad: </strong>
+                  {dataUNI.faculty}
+                </div>
+              </div>
+              <div className={classes.row}>
+                <div className={classes.apply}>
+                  <strong>Cargo al que postula: </strong> PRESIDENTE DE CONSEJO
+                </div>
               </div>
             </div>
-            <div className={classes.row}>
-              <div className={classes.codeMember}>
-                <strong>Código: </strong>
-                {dataUNI.code}
-              </div>
-              <div className={classes.professionMember}>
-                <strong>Carrera: </strong>
-                {dataUNI.specialty}
-              </div>
-              <div className={classes.conditionMember}>
-                <strong>Condición: </strong>
-                {dataUNI.condition}
-              </div>
-            </div>
-            <div className={classes.row}>
-              <div className={classes.facultyMember}>
-                <strong>Facultad: </strong>
-                {dataUNI.faculty}
-              </div>
-            </div>
-            <div className={classes.row}>
-              <div className={classes.apply}>
-                <strong>Cargo al que postula: </strong> PRESIDENTE DE CONSEJO
-              </div>
-            </div>
+          </div>
+
+          <div className={classes.returnCont}>
+            <Return />
           </div>
         </div>
-
-        <div className={classes.returnCont}>
-          <Return />
-        </div>
-      </div>
-      {localStorage.getItem('CODEUNI') ? '' : <Redirect to="/" />}
-    </React.Fragment>
-  );
+        {localStorage.getItem('CODEUNI') ? '' : <Redirect to="/" />}
+      </React.Fragment>
+    );
+  }
 };
 
 export default Member;
